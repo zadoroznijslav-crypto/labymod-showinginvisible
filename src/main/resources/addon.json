@@ -1,0 +1,7 @@
+{
+  "uuid": "4f8a21b3-6c8a-4b20-91a5-8e12d9812345",
+  "name": "ShowingInvisiblePlayers",
+  "author": "zyouime",
+  "version": "1.0.0",
+  "mainClass": "net.labymod.addons.showinginvisible.ShowingInvisibleAddon"
+}
