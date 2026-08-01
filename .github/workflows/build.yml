@@ -12,17 +12,14 @@ jobs:
     steps:
     - uses: actions/checkout@v4
 
-    - name: Set up JDK 11
-      uses: actions/setup-java@v4
-      with:
-        java-version: '11'
-        distribution: 'temurin'
-
-    - name: Setup Gradle
-      uses: gradle/actions/setup-gradle@v3
-
-    - name: Build with Gradle
-      run: gradle jar --no-daemon
+    - name: Pack Addon
+      run: |
+        mkdir -p build/libs/out
+        cp -r src/main/resources/* build/libs/out/ 2>/dev/null || true
+        mkdir -p build/libs/out/net/labymod/addons/showinginvisible
+        cp src/main/java/net/labymod/addons/showinginvisible/ShowingInvisibleAddon.java build/libs/out/net/labymod/addons/showinginvisible/
+        cd build/libs/out
+        zip -r ../ShowingInvisiblePlayers-LabyMod3.jar .
 
     - name: Upload Artifact
       uses: actions/upload-artifact@v4
