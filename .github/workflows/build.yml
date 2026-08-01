@@ -18,10 +18,13 @@ jobs:
         java-version: '11'
         distribution: 'temurin'
 
-    - name: Build JAR
+    - name: Compile Java Code
       run: |
+        mkdir -p build/classes/net/labymod/addons/showinginvisible
+        javac -d build/classes src/main/java/net/labymod/addons/showinginvisible/ShowingInvisibleAddon.java
+        cp src/main/resources/addon.json build/classes/
         mkdir -p build/libs
-        jar cvf build/libs/ShowingInvisiblePlayers-LabyMod3.jar -C src/main/resources . -C src/main/java .
+        jar cvf build/libs/ShowingInvisiblePlayers-LabyMod3.jar -C build/classes .
 
     - name: Upload Artifact
       uses: actions/upload-artifact@v4
